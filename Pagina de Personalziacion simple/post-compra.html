@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>¡Gracias por tu compra!</title>
+    <link rel="stylesheet" href="Css/post-compra.css">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <span class="loader">ZeroTech</span>
+    </div>
+    <!-- Contenido principal oculto al inicio -->
+    <div id="main-content" style="display:none;">
+        <nav class="main-nav">
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul id="main-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="https://www.youtube.com/@ZeroExploitTech" target="_blank" rel="noopener">Canal de Youtube</a></li>
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+        </nav>
+        <div class="post-compra-container">
+            <h1>¡Gracias por tu compra!</h1>
+            <p id="mensaje-personalizado" style="display:none;"></p>
+            <button id="continuar-btn">Siguiente</button>
+            <div id="instrucciones" style="display:none; margin-top:24px;">
+                <div class="pasos-flujo">
+                    <div class="paso-flujo">
+                        <span class="paso-numero">1</span>
+                        <span class="paso-texto">Revisa tu correo electrónico para ver la confirmación y detalles de tu pedido.</span>
+                    </div>
+                    <div class="paso-flujo">
+                        <span class="paso-numero">2</span>
+                        <span class="paso-texto">
+                            Para personalizar el código, revisa el tutorial en mi canal de Youtube.
+                        </span>
+                    </div>
+                    <div class="paso-flujo">
+                        <span class="paso-numero">3</span>
+                        <span class="paso-texto">Sigue las instrucciones del tutorial y pruébalo.</span>
+                    </div>
+                    <div class="paso-flujo">
+                        <span class="paso-numero">4</span>
+                        <span class="paso-texto">Si te gusta mi trabajo puedes ayudarme donando desde 1 USD.</span>
+                    </div>
+                </div>
+                <div id="btn-youtube-container" style="display:none; text-align:center; margin-top:22px;">
+                    <a href="https://www.youtube.com/@ZeroExploitTech" target="_blank" class="btn-youtube">Ver canal de Youtube</a>
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <p>&copy; 2024 ZeroTech. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@ZeroExploitTech" target="_blank" aria-label="TikTok" class="icon-tiktok">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M41 17.5c-3.7 0-6.7-3-6.7-6.7V6.5h-6.1v25.1c0 2.7-2.2 4.9-4.9 4.9s-4.9-2.2-4.9-4.9 2.2-4.9 4.9-4.9c.5 0 1 .1 1.5.2v-6.2c-.5-.1-1-.1-1.5-.1-6.1 0-11 4.9-11 11s4.9 11 11 11 11-4.9 11-11V23c1.9 1.1 4.1 1.7 6.5 1.7V17.5z" fill="#fff"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@ZeroExploitTech" target="_blank" aria-label="YouTube" class="icon-youtube">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 14.7s-.4-3.1-1.6-4.5c-1.5-1.6-3.2-1.6-4-1.7C33.2 8 24 8 24 8h0s-9.2 0-14.4.5c-.8.1-2.5.1-4 1.7C4.4 11.6 4 14.7 4 14.7S3.5 18.1 3.5 21.5v2.9c0 3.4.5 6.8.5 6.8s.4 3.1 1.6 4.5c1.5 1.6 3.5 1.5 4.4 1.7C14.8 40 24 40 24 40s9.2 0 14.4-.5c.8-.1 2.5-.1 4-1.7 1.2-1.4 1.6-4.5 1.6-4.5s.5-3.4.5-6.8v-2.9c0-3.4-.5-6.8-.5-6.8zM19.8 29.1V18.9l11.6 5.1-11.6 5.1z" fill="#fff"/>
+                    </svg>
+                </a>
+                <a href="https://discord.gg/zerotech" target="_blank" aria-label="Discord" class="icon-discord">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40.5 10.5A38.2 38.2 0 0 0 31.7 8c-.3.5-.6 1.1-.8 1.6-4.7-.7-9.4-.7-14.1 0-.2-.5-.5-1.1-.8-1.6A38.2 38.2 0 0 0 7.5 10.5C2.7 17.6 1.1 24.5 1.4 31.3c5.8 4.3 11.4 5.5 16.9 5.5.2-.3.4-.7.6-1.1-4.2-1.2-7.7-3.1-10.6-5.7.9.7 1.8 1.3 2.7 1.9 6.2 4.1 13.1 4.1 19.3 0 .9-.6 1.8-1.2 2.7-1.9-2.9 2.6-6.4 4.5-10.6 5.7.2.4.4.8.6 1.1 5.5 0 11.1-1.2 16.9-5.5.3-6.8-1.3-13.7-6.1-20.8zM16.2 27.2c-1.3 0-2.3-1.2-2.3-2.7s1-2.7 2.3-2.7c1.3 0 2.3 1.2 2.3 2.7s-1 2.7-2.3 2.7zm15.6 0c-1.3 0-2.3-1.2-2.3-2.7s1-2.7 2.3-2.7c1.3 0 2.3 1.2 2.3 2.7s-1 2.7-2.3 2.7z" fill="#fff"/>
+                    </svg>
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script src="Js/post-compra.js"></script>
+    <script src="js/post-compra-mobile.js"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="ZeroTech" data-description="Support me on Buy me a coffee!" data-message="Todo requiere esfuerzo , Apóyame desde 1 USD ❤️" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</body>
+</html>
