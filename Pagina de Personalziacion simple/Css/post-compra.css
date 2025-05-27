@@ -87,6 +87,23 @@ h1 {
     padding: 0;
     margin-bottom: 32px;
     border-bottom: 1px solid #222;
+    position: relative;
+    z-index: 10;
+}
+
+.main-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 7px;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(63,94,251,0.22) 0%, rgba(252,70,107,0.22) 100%);
+    filter: blur(4px);
+    opacity: 0.55;
+    border-radius: 0 0 8px 8px;
 }
 .main-nav ul {
     list-style: none;

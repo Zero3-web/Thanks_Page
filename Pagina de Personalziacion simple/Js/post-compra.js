@@ -42,8 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             i++;
                             setTimeout(typing, 40);
                         } else {
-                            // Sonido de confirmación al terminar el typing
-                            playSuccessSound();
                             // Animación de entrada (fade-in y slide-in)
                             mensajePersonalizado.classList.add('fade-slide-in');
                         }
@@ -77,25 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Sonido de confirmación (breve y agradable)
-    function playSuccessSound() {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const o = ctx.createOscillator();
-        const g = ctx.createGain();
-        o.type = 'triangle';
-        o.frequency.value = 660;
-        g.gain.value = 0.13;
-        o.connect(g);
-        g.connect(ctx.destination);
-        o.start();
-        setTimeout(() => {
-            o.frequency.value = 880;
-        }, 80);
-        setTimeout(() => {
-            g.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.08);
-            o.stop(ctx.currentTime + 0.09);
-            setTimeout(() => ctx.close(), 120);
-        }, 180);
-    }
+
 
     // Botón continuar
     if (continuarBtn) {
