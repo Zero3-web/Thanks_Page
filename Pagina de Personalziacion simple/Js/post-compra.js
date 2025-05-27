@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const continuarBtn = document.getElementById("continuar-btn");
     if (continuarBtn) {
         continuarBtn.style.display = "none";
+        continuarBtn.classList.remove('show');
     }
 
     // Retrasar la aparición del widget Buy Me a Coffee SOLO después del loading
@@ -40,19 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
                             mensajePersonalizado.textContent += mensaje.charAt(i);
                             i++;
                             setTimeout(typing, 40);
+                        } else {
+                            // Sonido de confirmación al terminar el typing
+                            playSuccessSound();
+                            // Animación de entrada (fade-in y slide-in)
+                            mensajePersonalizado.classList.add('fade-slide-in');
                         }
                     }
                     typing();
                 }
-                // Mostrar el botón "Siguiente" después de 1 segundo
+                // Mostrar el botón "Siguiente" después de 1 segundo con transición suave
                 if (continuarBtn) {
                     setTimeout(() => {
                         continuarBtn.style.display = "inline-block";
-                        continuarBtn.style.opacity = 0;
-                        continuarBtn.style.transition = "opacity 0.7s";
                         // Forzar reflow para transición
                         void continuarBtn.offsetWidth;
-                        continuarBtn.style.opacity = 1;
+                        continuarBtn.classList.add('show');
                     }, 1000);
                 }
                 // Inyectar Buy Me a Coffee widget después del loading y con retraso
@@ -72,6 +76,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000); // 3 segundos de loading
     }
 
+    // Sonido de confirmación (breve y agradable)
+    function playSuccessSound() {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = 'triangle';
+        o.frequency.value = 660;
+        g.gain.value = 0.13;
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.start();
+        setTimeout(() => {
+            o.frequency.value = 880;
+        }, 80);
+        setTimeout(() => {
+            g.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.08);
+            o.stop(ctx.currentTime + 0.09);
+            setTimeout(() => ctx.close(), 120);
+        }, 180);
+    }
+
     // Botón continuar
     if (continuarBtn) {
         continuarBtn.onclick = () => {
@@ -79,8 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             instrucciones.style.display = "block";
             // Fuerza reflow para que la transición funcione correctamente
             void instrucciones.offsetWidth;
-            instrucciones.style.opacity = 1;
-            instrucciones.style.transform = "translateY(0) scale(1)";
+            instrucciones.classList.add('show');
 
             continuarBtn.style.display = "none";
             // Cambia el título por "¿Ahora qué sigue?"

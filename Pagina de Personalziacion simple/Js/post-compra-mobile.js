@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function() {
         hamburger.addEventListener("click", function() {
             hamburger.classList.toggle("active");
             menu.classList.toggle("open");
+            // Bloquear scroll horizontal cuando el menú está abierto
+            if (menu.classList.contains("open")) {
+                document.body.classList.add("menu-open");
+            } else {
+                document.body.classList.remove("menu-open");
+            }
         });
 
         // Opcional: cerrar menú al hacer click en un enlace
@@ -13,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
             link.addEventListener("click", () => {
                 hamburger.classList.remove("active");
                 menu.classList.remove("open");
+                document.body.classList.remove("menu-open");
             });
         });
     }
